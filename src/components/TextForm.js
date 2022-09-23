@@ -17,6 +17,9 @@ export default function TextForm(props) {
             setText(e.target.value);
     }
 
+    const handleClear=(e)=>{
+        setText("")
+    }
 
   return (
     <>
@@ -28,8 +31,11 @@ export default function TextForm(props) {
 <button className="btn btn-primary" style={{margin:"10px"}} onClick={handleUpClick} >
     Convert to UpperCase
 </button>
-<button className="btn btn-primary" onClick={handleLowClick} >
+<button className="btn btn-primary" style={{margin:"10px"}} onClick={handleLowClick} >
     Convert to UpperCase
+</button>
+<button className="btn btn-primary" style={{margin:"10px"}} onClick={handleClear}>
+    Clear
 </button>
     </div>
 
