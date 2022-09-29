@@ -30,23 +30,23 @@ export default function TextForm(props) {
 <div className="mb-3">
   <textarea value={text} style={{backgroundColor:props.mode==='light'? 'white':'#042743',color:props.mode==='dark'? 'white':'black'}} className="form-control" id="exampleFormControlTextarea1" rows="8" onChange={handleOnChange} ></textarea>
 </div>
-<button className="btn btn-primary" style={{margin:"10px"}} onClick={handleUpClick} >
+<button disabled={text.length===0} className="btn btn-primary mx-1 my-1" style={{margin:"10px"}}  onClick={handleUpClick} >
     Convert to UpperCase
 </button>
-<button className="btn btn-primary" style={{margin:"10px"}} onClick={handleLowClick} >
+<button  disabled={text.length===0}  className="btn btn-primary mx-1 my-1"  style={{margin:"10px"}} onClick={handleLowClick} >
     Convert to UpperCase
 </button>
-<button className="btn btn-primary" style={{margin:"10px"}} onClick={handleClear}>
+<button  disabled={text.length===0}  className="btn btn-primary mx-1 my-1" style={{margin:"10px"}} onClick={handleClear}>
     Clear
 </button>
     </div>
 
     <div className='container my-5'  style={{color:props.mode==='dark'? 'white':'black'}}>
         <h2>Your Text Summary</h2>
-        <p>{text.split(" ").length-1} and {text.length} characters</p>
-        <p>{0.008* text.split(" ").length - 0.008 } minutes to read the text </p>
+        <p>{text.split(" ").filter((ele)=>{return ele.length!==0}).length} words and {text.length} characters</p>
+        <p>{0.008* text.split(" ").filter((ele)=>{return ele.length!==0}).length } minutes to read the text </p>
         <p>Preview</p>
-        <h2  >{text.length>0?text:'Enter your text to preview it here!'}</h2>
+        <h2  >{text.length>0?text:'Nothing to preview!'}</h2>
     </div>
     </>
   )
